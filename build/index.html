@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneakers - Fall Limited Edition</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body class="font-kumbh">
+  <header class="bg-white shadow-sm relative">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div class="flex items-center">
+            <button id="menu-button" class="mr-4 lg:hidden" >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <div class="text-3xl font-bold">sneakers</div>
+        </div>
+        <nav id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-md lg:shadow-none lg:relative lg:top-auto lg:left-auto lg:w-auto lg:flex lg:items-baseline"  onclick="toggleMobileMenu()">
+          <div class="p-4 space-y-4 lg:p-0 lg:space-y-0 lg:space-x-6">
+            <a href="#" class="block text-gray-600 hover:text-gray-900 lg:inline-block nav-link">Collections</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-900 lg:inline-block nav-link">Men</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-900 lg:inline-block nav-link">Women</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-900 lg:inline-block nav-link">About</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-900 lg:inline-block nav-link">Contact</a>
+        </div>
+        
+        <div class="hidden border-b-2 border-orange-500"></div>
+        </nav>
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <button class="relative" id="cart-button" >
+                    <img src="images/icon-cart.svg" alt="Cart">
+                    <span class="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center hidden" id="cart-count">0</span>
+                </button>
+                <div id="cartDropdown" class="absolute right-0 mt-2 w-80 bg-white border rounded-lg shadow-lg hidden z-50">
+                    <div class="p-4 border-b">
+                        <h2 class="text-lg font-semibold">Cart</h2>
+                    </div>
+                    <ul id="cartItems" class="p-4 space-y-4">
+                    </ul>
+                    <div class="p-4 border-t">
+                        <button class="w-full bg-orange-500 text-white py-2 rounded-lg">Checkout</button>
+                    </div>
+                </div>
+            </div>
+            <img src="images/image-avatar.png" alt="User Avatar" class="w-8 h-8 lg:w-10 lg:h-10 rounded-full">
+        </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-16 py-10">
+    <div class="flex flex-col lg:flex-row lg:space-x-6 px-16">
+        <div class="lg:w-1/2 mb-6 lg:mb-0">
+            <div class="bg-white rounded-lg overflow-hidden mb-6  relative">
+                <img src="images/image-product-1.jpg" alt="Sneaker" class="w-full h-auto rounded-lg" id="main-img" onclick="openLightbox()">
+
+                <button id="prev-button" class="absolute top-1/2 left-3 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md lg:hidden" onclick="previousImage()">
+                    <img src="images/icon-previous.svg" alt="Previous">
+                </button>
+
+                <button id="next-button" class="absolute top-1/2 right-3 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md lg:hidden" onclick="nextImage()">
+                    <img src="images/icon-next.svg" alt="Next">
+                </button>
+            </div>
+            <div class="grid grid-cols-4 gap-4 hidden lg:grid">
+                <img src="images/image-product-1-thumbnail.jpg" alt="Thumbnail 1" class="w-full h-auto rounded-lg hover:opacity-50" onclick="changeMainImage(this)">
+                <img src="images/image-product-2-thumbnail.jpg" alt="Thumbnail 2" class="w-full h-auto rounded-lg hover:opacity-50" onclick="changeMainImage(this)">
+                <img src="images/image-product-3-thumbnail.jpg" alt="Thumbnail 3" class="w-full h-auto rounded-lg hover:opacity-50" onclick="changeMainImage(this)">
+                <img src="images/image-product-4-thumbnail.jpg" alt="Thumbnail 4" class="w-full h-auto rounded-lg hover:opacity-50" onclick="changeMainImage(this)">
+            </div>
+        </div>
+        <div class="lg:w-1/2">
+            <h2 class="text-sm text-orange-500 uppercase mb-2 font-bold">Sneaker Company</h2>
+            <h1 class="text-3xl font-bold mb-4">Fall Limited Edition Sneakers</h1>
+            <p class="text-gray-600 mb-6">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.</p>
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center">
+                    <span class="text-3xl font-bold mr-4" id="price-discount">$125.00</span>
+                    <span class="bg-orange-100 text-orange-500 px-3 py-1 rounded">50%</span>
+                </div>
+                <p class="text-gray-400 line-through" id="price-original">$250.00</p>
+            </div>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <div class="flex items-center justify-between bg-gray-100 rounded-md p-2">
+                    <button class="px-4 py-2 text-orange-500 font-bold" id="dec-btn" onclick="removeItem()">-</button>
+                    <span class="px-4 py-2" id="product-quantity">1</span>
+                    <button class="px-4 py-2 text-orange-500 font-bold" id="inc-btn" onclick="addItem()">+</button>
+                </div>
+                <button class="bg-orange-500 text-white px-6 py-3 rounded-md flex-grow flex items-center justify-center" id="add-to-cart" onclick="addToCart()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    Add to cart
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+  <div class="max-w-md w-full p-4">
+      <button id="close-lightbox" class="absolute top-4 right-4 text-white" onclick="closeLightBox()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+      </button>
+      <div class="relative">
+          <img src="images/image-product-1.jpg" alt="Sneaker" class="w-full h-auto max-h-100 rounded-lg" id="lightbox-img">
+          <button id="lightbox-prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md" onclick="previousLightBoxImage()">
+              <img src="images/icon-previous.svg" alt="Previous">
+          </button>
+          <button id="lightbox-next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md" onclick="nextLightBoxImage()">
+              <img src="images/icon-next.svg" alt="Next">
+          </button>
+      </div>
+      <div class="flex justify-center mt-4 space-x-2">
+          <img src="images/image-product-1-thumbnail.jpg" alt="Thumbnail 1" class="w-16 h-16 rounded-lg cursor-pointer lightbox-thumbnail active hover:opacity-50">
+          <img src="images/image-product-2-thumbnail.jpg" alt="Thumbnail 2" class="w-16 h-16 rounded-lg cursor-pointer lightbox-thumbnail hover:opacity-50">
+          <img src="images/image-product-3-thumbnail.jpg" alt="Thumbnail 3" class="w-16 h-16 rounded-lg cursor-pointer lightbox-thumbnail hover:opacity-50">
+          <img src="images/image-product-4-thumbnail.jpg" alt="Thumbnail 4" class="w-16 h-16 rounded-lg cursor-pointer lightbox-thumbnail hover:opacity-50">
+      </div>
+  </div>
+</div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
