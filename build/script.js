@@ -112,10 +112,10 @@ function toggleMobileMenu() {
     console.log('mobile menu works');
     menuButton.addEventListener('click', () => {
         if (mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.remove('hidden');  // Show menu
-            mobileMenu.classList.add('block');      // Ensure it's displayed
+            mobileMenu.classList.remove('hidden');  
+            mobileMenu.classList.add('block');      
         } else {
-            mobileMenu.classList.remove('block');   // Hide menu
+            mobileMenu.classList.remove('block');  
             mobileMenu.classList.add('hidden');
         }
     });
@@ -182,7 +182,6 @@ function previousLightBoxImage() {
     lightboxImageElement.src = imageArray[currentLightboxIndex];
 }
 
-// Function to go to the next image in the lightbox
 function nextLightBoxImage() {
     currentLightboxIndex = currentLightboxIndex = (4+(currentLightboxIndex+1)%4)%4;;
     const lightboxImageElement = document.getElementById('lightbox-img');
